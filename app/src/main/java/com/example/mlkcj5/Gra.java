@@ -20,3 +20,4 @@ public class Gra {
         this.kategoriaWiekowa = kategoriaWiekowa;
         this.kategoriaNazwa = kategoriaNazwa;
     }
+}
