@@ -2,6 +2,7 @@ package com.example.mlkcj5;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -73,5 +74,17 @@ public class MainActivity extends AppCompatActivity {
                 gryList
         );
         listView.setAdapter(arrayAdapter);
+
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                graDatabase.zwrocGryDao().usunZBazy(gryList.get(i));
+                gryList.remove(i);
+                arrayAdapter.notifyDataSetChanged();
+
+                return false;
+            }
+        });
     }
 }
