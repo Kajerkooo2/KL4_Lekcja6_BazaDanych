@@ -2,8 +2,10 @@ package com.example.mlkcj5;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
 
 import androidx.activity.EdgeToEdge;
@@ -13,11 +15,17 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.room.Room;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
 
     Button btnDodaj;
     EditText etMin,etMax,etWiek,etNazwa;
     Spinner spNazwaKategori;
+    ListView listView;
+
+    List<Gra> gryList;
+    ArrayAdapter<Gra> arrayAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
         spNazwaKategori = findViewById(R.id.spCategoryName);
         etNazwa = findViewById(R.id.etName);
 
+        listView = findViewById(R.id.listView);
+
         btnDodaj.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,5 +65,13 @@ public class MainActivity extends AppCompatActivity {
                 graDatabase.zwrocGryDao().wstawGryDoBazy(gra);
             }
         });
+
+        gryList = graDatabase.zwrocGryDao().zwrocWszystkieGry();
+        arrayAdapter = new ArrayAdapter<>(
+                MainActivity.this,
+                android.R.layout.simple_list_item_1,
+                gryList
+        );
+        listView.setAdapter(arrayAdapter);
     }
 }

@@ -24,4 +24,16 @@ public class Gra {
         this.kategoriaWiekowa = kategoriaWiekowa;
         this.kategoriaNazwa = kategoriaNazwa;
     }
+
+    @Override
+    public String toString() {
+        return "Gra{" +
+                "id=" + id +
+                ", nazwa='" + nazwa + '\'' +
+                ", minLiczbaOsob=" + minLiczbaOsob +
+                ", maksLiczbaOsob=" + maksLiczbaOsob +
+                ", kategoriaWiekowa=" + kategoriaWiekowa +
+                ", kategoriaNazwa='" + kategoriaNazwa + '\'' +
+                '}';
+    }
 }
