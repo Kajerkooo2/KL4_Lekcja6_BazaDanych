@@ -1,13 +1,17 @@
 package com.example.mlkcj5;
 
-import androidx.room3.Entity;
-import androidx.room3.PrimaryKey;
 
-@Entity (tableName = "gry")
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "gry")
 public class Gra {
     @PrimaryKey(autoGenerate = true)
     public int id;
     public String nazwa;
+
+    @ColumnInfo(name = "min")
     public int minLiczbaOsob;
     public int maksLiczbaOsob;
     public int kategoriaWiekowa;

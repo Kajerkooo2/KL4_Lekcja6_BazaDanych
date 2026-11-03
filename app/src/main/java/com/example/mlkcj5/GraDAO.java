@@ -1,12 +1,16 @@
 package com.example.mlkcj5;
 
-import androidx.room3.Delete;
-import androidx.room3.Insert;
-import androidx.room3.Query;
-import androidx.room3.Update;
+
+
+import androidx.room.Dao;
+import androidx.room.Delete;
+import androidx.room.Insert;
+import androidx.room.Query;
+import androidx.room.Update;
 
 import java.util.List;
 
+@Dao
 public interface GraDAO {
     @Insert
     public void wstawGreDoBazy(Gra gra);
@@ -23,7 +27,7 @@ public interface GraDAO {
     @Query("SELECT * from gry")
     public List<Gra> zwrocWszystkieGry();
 
-    @Query("SELECT nazwa from gry where minLiczba = :ile")
+    @Query("SELECT nazwa from gry where min = :ile")
     public List<String> zwrocNazwyGierDlaLiczbyOsob(int ile);
 
 }
