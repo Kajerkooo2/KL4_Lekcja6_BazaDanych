@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">mlkcj5</string>
+    <string-array name="Categories">
+        <item>karciane</item>
+        <item>logiczne</item>
+        <item>RPG</item>
+        <item>strategiczne</item>
+    </string-array>
 </resources>
