@@ -57,6 +57,13 @@
         android:layout_height="wrap_content"
         android:text="Dodaj" />
 
+    <Button
+        android:id="@+id/btnUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Aktualizuj"
+        android:visibility="invisible"/>
+
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"

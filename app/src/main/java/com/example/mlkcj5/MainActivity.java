@@ -1,5 +1,7 @@
 package com.example.mlkcj5;
 
+import static android.view.View.VISIBLE;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -20,13 +22,17 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnDodaj;
+    Button btnDodaj,btnAktualizuj;
     EditText etMin,etMax,etWiek,etNazwa;
     Spinner spNazwaKategori;
     ListView listView;
 
     List<Gra> gryList;
     ArrayAdapter<Gra> arrayAdapter;
+
+    Gra kliknietaGra;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         btnDodaj = findViewById(R.id.btnSend);
+        btnAktualizuj = findViewById(R.id.btnUpdate);
         etMax = findViewById(R.id.etMax);
         etMin = findViewById(R.id.etMin);
         etWiek = findViewById(R.id.etAge);
@@ -84,6 +91,31 @@ public class MainActivity extends AppCompatActivity {
                 arrayAdapter.notifyDataSetChanged();
 
                 return false;
+            }
+        });
+
+        listView.setOnItemClickListener(
+                new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                        kliknietaGra = gryList.get(i);
+
+                        etNazwa.setText(kliknietaGra.nazwa);
+                        etMin.setText(""+kliknietaGra.minLiczbaOsob);
+                        etMax.setText(""+kliknietaGra.maksLiczbaOsob);
+                        etWiek.setText(""+kliknietaGra.kategoriaWiekowa);
+                        //bez spinnera narazie
+
+                        btnAktualizuj.setVisibility(VISIBLE);
+                    }
+                }
+        );
+        btnAktualizuj.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                kliknietaGra.nazwa = etNazwa.getText().toString();
+                //dokonczyc
             }
         });
     }
